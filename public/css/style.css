@@ -6,13 +6,16 @@
 }
 
 body {
-    background-color: #1a1a1a; /* Dark background color */
-    color: #ffffff; /* Light text color */
-    font-family: Arial, sans-serif;
+    background-image: url(../images/keyboard.jpg); /* Dark background color */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #f2f2f2; /* Light text color */
+    font-family: 'Roboto', sans-serif;
 }
 
 header {
-    background-color: #333; /* Dark gray header background color */
+    background-color: #181818; /* Dark gray header background color */
     padding: 10px 0;
     text-align: center;
 }
@@ -23,12 +26,14 @@ nav ul {
 
 nav li {
     display: inline;
-    margin: 0 10px;
+    margin: 0 20px;
 }
 
 nav a {
     text-decoration: none;
-    color: #ffffff; /* White link color */
+    color: #ff7f00; /* Fun, orange link color */
+    font-family: 'Baloo Bhai 2', cursive;
+    font-weight: bold;
 }
 
 .logo {
@@ -37,9 +42,23 @@ nav a {
 }
 
 .logo h1 {
-    font-size: 36px;
-    color: #ff7f00; /* Fun, orange color for the logo text */
+    font-size: 48px;
     text-transform: uppercase;
+    font-family: 'Righteous', cursive;
+    background: linear-gradient(90deg, #f06, #6f0, #06f, #f06);
+    background-clip: text;
+    /* color: transparent; */
+    background-size: 400%;
+    animation: neonRainbow 5s linear infinite;
+}
+
+@keyframes neonRainbow {
+    0% {
+        background-position: 0%;
+    }
+    100% {
+        background-position: 400%;
+    }
 }
 
 /* Style the links in the header */
