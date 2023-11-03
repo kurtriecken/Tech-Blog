@@ -16,15 +16,10 @@ const PORT = process.env.PORT || 3001;
 // Sets up session and connect to our Sequelize db
 const sess = {
     secret: 'Super secret secret',
-    // TODO: Add a comment describing the purpose of adding a cookies object to our options to our session object
     cookie: {
-        // TODO: Add a comment describing the functionality of the maxAge attribute
         maxAge: 60 * 60 * 1000,
-        // TODO: Add a comment describing the functionality of the httpOnly attribute
         httpOnly: true,
-        // TODO: Add a comment describing the functionality of the secure attribute
         secure: false,
-        // TODO: Add a comment describing the functionality of the sameSite attribute
         sameSite: 'strict',
     },
     resave: false,
