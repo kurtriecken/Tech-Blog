@@ -12,12 +12,18 @@ body {
     background-attachment: fixed;
     color: #f2f2f2; /* Light text color */
     font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
 header {
     background-color: #181818; /* Dark gray header background color */
     padding: 10px 0;
     text-align: center;
+    width: 100vw;
 }
 
 nav ul {
@@ -49,7 +55,8 @@ nav a {
     background-clip: text;
     /* color: transparent; */
     background-size: 400%;
-    animation: neonRainbow 5s linear infinite;
+    animation: neonRainbow 10s linear infinite;
+    width: 100vw;
 }
 
 @keyframes neonRainbow {
