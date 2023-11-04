@@ -30,5 +30,14 @@ BlogPost.init(
                 key: 'id',
             }
         }
+    },
+    {
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'blog_post',
     }
 )
+
+module.exports = BlogPost;
