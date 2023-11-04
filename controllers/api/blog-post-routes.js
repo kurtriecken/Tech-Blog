@@ -25,4 +25,24 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+// DELETE BlogPost by id
+router.delete('/:id', async (req, res) => {
+    try {
+        const blogPostData = await BlogPost.destroy({
+            where: {
+                id: req.params.id,
+            },
+        });
+
+        if(!blogPostData) {
+            res.status(404).json({ message: "No blog post found with that ID!" });
+            return;
+        };
+
+        res.status(200).json(blogPostData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 module.exports = router;

@@ -14,10 +14,30 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET one user by id
+// GET one User by id
 router.get('/:id', async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id);
+
+    res.status(200).json(userData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// DELETE User by id
+router.delete('/:id', async (req, res) => {
+  try {
+    const userData = await User.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    if (!userData) {
+      res.status(404).json({ message: "No user found with that ID!" });
+      return;
+    };
 
     res.status(200).json(userData);
   } catch (err) {
