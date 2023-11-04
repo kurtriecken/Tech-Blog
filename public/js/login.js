@@ -22,8 +22,6 @@ const loginFormHandler = async (event) => {
             alert(response.statusText);
         }
     };
-
-    // document.location.replace('/');
 };
 
 

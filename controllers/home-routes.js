@@ -35,13 +35,16 @@ router.get('/signup', async (req, res) => {
 
 router.get('/profile', withAuth, async (req, res) => {
     try {
+        // console.trace('Im in here now people');
+        // console.log(req.session);
+
         // Find who is logged in based on session ID
-        const userData = await User.findByPk(req.session.use_id, {
-            attributes: { exclude: ['password'] },
-            include: [{ model: BlogPost }],
+        const userData = await User.findByPk(req.session.user_id, {
+            attributes: { exclude: ['password'] }
         });
 
         const user = userData.get({ plain: true });
+        // console.trace('Im in here now Peepes');
         res.render('profile', {
             ...user,
             logged_in: true
