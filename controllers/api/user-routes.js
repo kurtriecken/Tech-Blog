@@ -25,6 +25,21 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+// CREATE new User
+router.post('/', async (req, res) => {
+  try {
+    const userData = await User.create({
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password,
+    });
+
+    res.status(200).json(userData);
+  } catch (err) {
+    res.status(500).json(err);    
+  }
+});
+
 // DELETE User by id
 router.delete('/:id', async (req, res) => {
   try {

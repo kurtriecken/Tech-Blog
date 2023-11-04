@@ -25,6 +25,22 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+// CREATE new BlogPost
+router.post('/', async (req, res) => {
+    try {
+        const blogPostData = await BlogPost.create({
+            title: req.body.title,
+            content: req.body.content,
+            date_created: req.body.date_created,
+            user_id: req.body.user_id
+        });
+
+        res.status(200).json(blogPostData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 // DELETE BlogPost by id
 router.delete('/:id', async (req, res) => {
     try {

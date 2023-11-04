@@ -25,6 +25,22 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+// CREATE new Comment
+router.post('/', async (req, res) => {
+    try {
+        const commentData = await Comment.create({
+            content: req.body.content,
+            date_created: req.body.date_created,
+            user_id: req.body.user_id,
+            blog_post_id: req.body.blog_post_id,
+        });
+
+        res.status(200).json(commentData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 // DELETE Comment by id
 router.delete('/:id', async (req, res) => {
     try {
@@ -34,7 +50,7 @@ router.delete('/:id', async (req, res) => {
             },
         });
 
-        if(!commentData) {
+        if (!commentData) {
             res.status(404).json({ message: "No comment found with that ID!" });
             return;
         };
