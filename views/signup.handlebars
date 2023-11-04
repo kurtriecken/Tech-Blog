@@ -1,6 +1,4 @@
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" type="text/css" href="/css/jass.css">
     <link rel="stylesheet" href="/css/style.css">
     <style>
@@ -51,6 +49,7 @@
             color: #777;
         }
     </style>
+</head>
 
 
 <body>
@@ -58,21 +57,19 @@
         <nav>
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="/login">Login</a></li>
-                <li><a href="#">Logout</a></li>
             </ul>
         </nav>
     </header>
             <main>
             <div class="card">
                 <h2>Sign-up</h2>
-                <form action="#" method="post">
+                <form class="signup-form" action="#" method="post">
                     <input type="email" placeholder="Email" required>
                     <input type="text" placeholder="Username" required>
                     <input type="password" placeholder="Password" required>
                     <button type="submit">Let's go!</button>
                 </form>
+                <p>Already have an account? <a href="/login">Log in</a></p>
             </div>
         </main>
 </body>

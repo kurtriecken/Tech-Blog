@@ -1,3 +1,5 @@
+const withAuth = require('../utils/auth');
+const { User } = require('../models');
 const router = require('express').Router();
 
 // ROUTE: /
@@ -15,6 +17,7 @@ router.get('/login', async (req, res) => {
     // BUILD THIS OUT
     if (req.session.logged_in) {
         // BUILD THIS
+        res.render('homepage');
         return;
     }
     else {
@@ -29,6 +32,25 @@ router.get('/signup', async (req, res) => {
         // "signup" button on the homepage or login screen
         res.render('signup');
 });
+
+router.get('/profile', withAuth, async (req, res) => {
+    try {
+        // Find who is logged in based on session ID
+        const userData = await User.findByPk(req.session.use_id, {
+            attributes: { exclude: ['password'] },
+            include: [{ model: BlogPost }],
+        });
+
+        const user = userData.get({ plain: true });
+        res.render('profile', {
+            ...user,
+            logged_in: true
+        });
+
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
 
 router.get('*', async (req, res) => {
     try {
