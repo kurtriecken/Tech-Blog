@@ -1,12 +1,29 @@
 const withAuth = require('../utils/auth');
-const { User } = require('../models');
+const { User, BlogPost } = require('../models');
 const router = require('express').Router();
 
 // ROUTE: /
 
 router.get('/', async (req, res) => {
     try {
-        res.render('homepage');
+        // Get all blogposts and join with User data
+        const blogpostData = await BlogPost.findAll({
+            include: [
+                {
+                    model: User,
+                    attributes: ['username'],
+                },
+            ],
+        });
+
+        // Serialize the data so the template can read it
+        const blogposts = blogpostData.map((bp) => bp.get({ plain: true }));
+
+        res.render('homepage', {
+            blogposts,
+            logged_in: req.session.logged_in
+        });
+
     } catch (err) {
         res.status(500).json(err);
     }
@@ -17,7 +34,7 @@ router.get('/login', async (req, res) => {
     // BUILD THIS OUT
     if (req.session.logged_in) {
         // BUILD THIS
-        res.render('homepage');
+        res.redirect('/profile');
         return;
     }
     else {
