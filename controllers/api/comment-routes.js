@@ -28,10 +28,16 @@ router.get('/:id', async (req, res) => {
 // CREATE new Comment
 router.post('/', async (req, res) => {
     try {
+        console.trace(req.session.user_id);
+        console.trace(req.body);
+        let id = req.body.user_id;
+        if (!req.body.user_id) {
+            id = req.session.user_id;
+        }
         const commentData = await Comment.create({
             content: req.body.content,
             date_created: req.body.date_created,
-            user_id: req.body.user_id,
+            user_id: id,
             blog_post_id: req.body.blog_post_id,
         });
 

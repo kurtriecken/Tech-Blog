@@ -23,7 +23,7 @@
         <h1>The Tech Blog</h1>
     </div>
     <main>
-        <div class="card">
+        <div class="card" data-id="{{id}}">
             <div class="title">
                 <h2>{{title}}</h2>
             </div>
@@ -42,11 +42,11 @@
                 {{/each}}
             </ul>
             {{#if logged_in}}
-            <form id="myForm">
+            <form id="bp-comment-card" class="comment-form" action="#" method="post">
                 <label for="name">Add a comment below!</label><br><br>
-                <textarea name="comment-text" rows="5" cols="40" required></textarea>
+                <textarea id="comment-content" name="comment-text" rows="5" cols="40" required></textarea>
                 <br>
-                <button type="button" id="populateButton">Submit</button>
+                <button type="submit">Submit</button>
             </form>
             {{/if}}
         </div>
@@ -54,4 +54,5 @@
     {{#if logged_in}}
     <script src="/js/logout.js"></script>
     {{/if}}
+    <script src="/js/newcomment.js"></script>
 </body>
