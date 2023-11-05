@@ -72,6 +72,23 @@ router.get('/profile', withAuth, async (req, res) => {
     }
 })
 
+router.get('/newpost', withAuth, async (req, res) => {
+    try {
+        const userData = await User.findByPk(req.session.user_id, {
+            attributes: { exclude: ['password'] }
+        });
+
+        const user = userData.get({ plain: true });
+        // console.trace('Im in here now Peepes');
+        res.render('newpost', {
+            ...user,
+            logged_in: true
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
+
 router.get('*', async (req, res) => {
     try {
         res.render('404');

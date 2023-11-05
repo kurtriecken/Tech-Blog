@@ -23,7 +23,13 @@
     <main>
         {{!-- Loop over each blog post in the blogposts array --}}
         {{#each blogposts as |blogpost| }}
-        <h1>{{blogpost.title}}</h1>
+        <div class="card">
+            <div class="title"><h2>{{blogpost.title}}</h2></div>
+            <div class="content">
+                <p>{{blogpost.content}}</p>
+            </div>
+            <div class="username">{{user.username}}</div>
+        </div>
         {{/each}}
     </main>
 </body>
