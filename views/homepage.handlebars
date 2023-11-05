@@ -22,13 +22,15 @@
     </div>
     <main>
         {{!-- Loop over each blog post in the blogposts array --}}
-        {{#each blogposts as |blogpost| }}
-        <div class="card">
-            <div class="title"><h2>{{blogpost.title}}</h2></div>
+        {{#each blog_posts as |blog_post| }}
+        <div class="card card-bp">
+            <a href="/blogpost/{{blog_post.id}}"></a>
+            <div class="title"><h2>{{blog_post.title}}</h2></div>
             <div class="content">
-                <p>{{blogpost.content}}</p>
+                <p>{{blog_post.content}}</p>
             </div>
             <div class="username">{{user.username}}</div>
+            {{!-- <div>{{user.email}}</div> --}}
         </div>
         {{/each}}
     </main>

@@ -17,14 +17,16 @@
         <h1>The Tech Blog</h1>
     </div>
     <main>
-        <h1>YOUR PROFILE IS HERE</h1>
-        {{#each blogposts as |blogpost| }}
-        <div class="card">
-            <div class="title"><h2>{{blogpost.title}}</h2></div>
+        <h1>Your posts:</h1>
+        {{#each blog_posts as |blog_post| }}
+        <div class="card card-bp">
+            <a href="/blogpost/{{blog_post.id}}"></a>
+            <div class="title"><h2>{{blog_post.title}}</h2></div>
             <div class="content">
-                <p>{{blogpost.content}}</p>
+                <p>{{blog_post.content}}</p>
             </div>
-            <div class="username">{{user.username}}</div>
+            {{!-- THIS isnt showing up atm; try to fix before production --}}
+            <div class="username">{{username}}</div>
         </div>
         {{/each}}
         <button id="new-post-btn">Create a new post!</button>

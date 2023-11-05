@@ -11,16 +11,15 @@ router.get('/', async (req, res) => {
             include: [
                 {
                     model: User,
-                    attributes: ['username'],
                 },
             ],
         });
 
         // Serialize the data so the template can read it
-        const blogposts = blogpostData.map((bp) => bp.get({ plain: true }));
+        const blog_posts = blogpostData.map((bp) => bp.get({ plain: true }));
 
         res.render('homepage', {
-            blogposts,
+            blog_posts,
             logged_in: req.session.logged_in
         });
 
@@ -62,7 +61,7 @@ router.get('/profile', withAuth, async (req, res) => {
         });
 
         const user = userData.get({ plain: true });
-        // console.trace('Im in here now Peepes');
+        console.trace(user);
         res.render('profile', {
             ...user,
             logged_in: true
@@ -84,6 +83,32 @@ router.get('/newpost', withAuth, async (req, res) => {
         res.render('newpost', {
             ...user,
             logged_in: true
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
+
+// CREATE A ROUTE to send to a page with just 1 blogpost
+// Here, users can add a comment to the blog post
+// It should style the same as the home page
+router.get('/blogpost/:id', async (req, res) => {
+    try {
+        const blogPostData = await BlogPost.findByPk(req.params.id, {
+            include: [
+                {
+                    model: User,
+                    attributes: {
+                        exclude: ['password'],
+                    },
+                },
+            ],
+        });
+
+        const blog_post = blogPostData.get({ plain: true });
+
+        res.render('homepage', {
+            ...blog_post,
         });
     } catch (err) {
         res.status(500).json(err);
