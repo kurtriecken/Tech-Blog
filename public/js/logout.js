@@ -11,9 +11,4 @@ const logout = async () => {
   }
 };
 
-const navToNewPost = async() => {
-  document.location.replace('/newpost');
-};
-
 document.querySelector('#logout').addEventListener('click', logout);
-document.querySelector('#new-post-btn').addEventListener('click', navToNewPost);

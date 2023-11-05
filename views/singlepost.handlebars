@@ -10,6 +10,8 @@
                 <li><a href="/">Home</a></li>
                 {{#if logged_in}}
                 <li><a href="/profile">Profile</a></li>
+                <li><a id="logout">Logout</a></li>
+                {{!-- <li><button id="logout">Logout</button></li> --}}
                 {{else}}
                 <li><a href="/login">Login</a></li>
                 <li><a href="/signup">Sign Up!</a></li>
@@ -28,15 +30,28 @@
             <div class="content">
                 <p>{{content}}</p>
             </div>
+            <div class="username">{{user.username}}</div>
             <ul>
+                {{#unless comments}}
+                <p style="font-style: oblique">(No comments yet...)</p>
+                {{/unless}}
                 {{#each comments as |comment| }}
                 <li>
                     <p>{{comment.content}} -{{comment.user.username}}</p>
                 </li>
                 {{/each}}
             </ul>
-
-            <div class="username">{{user.username}}</div>
+            {{#if logged_in}}
+            <form id="myForm">
+                <label for="name">Add a comment below!</label><br><br>
+                <textarea name="comment-text" rows="5" cols="40" required></textarea>
+                <br>
+                <button type="button" id="populateButton">Submit</button>
+            </form>
+            {{/if}}
         </div>
     </main>
+    {{#if logged_in}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
 </body>

@@ -14,15 +14,16 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Login to a user
 router.post('/login', async (req, res) => {
   //DO THIS
   try {
     // console.trace('HERE I AM');
     // console.log(req.body);
-    const userData = await User.findOne({ where: { email: req.body.email } });
+    const userData = await User.findOne({ where: { username: req.body.username } });
     // console.log(userData.toJSON());
     if (!userData) {
-      res.status(400).json({ mesage: 'Incorrect email or password, please try again!'});
+      res.status(400).json({ mesage: 'Incorrect username or password, please try again!'});
       return;
     }
 
@@ -33,7 +34,7 @@ router.post('/login', async (req, res) => {
 
 
     if (!validPassword) {
-      res.status(400).json({ message: 'Incorrect email or password, please try again!' });
+      res.status(400).json({ message: 'Incorrect username or password, please try again!' });
       return;
     }
 
@@ -49,7 +50,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// Log out
+// Log out of a user
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
@@ -80,7 +81,12 @@ router.post('/', async (req, res) => {
       password: req.body.password,
     });
 
+    console.trace(userData);
+
+    // const user = userData.get({ plain: true });
+
     res.status(200).json(userData);
+    
   } catch (err) {
     res.status(500).json(err);    
   }

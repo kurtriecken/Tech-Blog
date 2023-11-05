@@ -111,7 +111,7 @@ router.get('/blogpost/:id', async (req, res) => {
         });
 
         const blog_posts = blogPostData.get({ plain: true });
-        console.trace(blog_posts.comments[0].user)
+        console.trace(blog_posts)
 
         res.render('singlepost', {
             ...blog_posts,
