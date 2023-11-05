@@ -30,14 +30,14 @@
             <div class="content">
                 <p>{{content}}</p>
             </div>
-            <div class="username">{{user.username}}</div>
+            <div class="username">{{user.username}} @ {{date_created}}</div>
             <ul>
                 {{#unless comments}}
                 <p style="font-style: oblique">(No comments yet...)</p>
                 {{/unless}}
                 {{#each comments as |comment| }}
                 <li>
-                    <p>{{comment.content}} -{{comment.user.username}}</p>
+                    <p>{{comment.content}} -{{comment.user.username}} @ {{comment.date_created}}</p>
                 </li>
                 {{/each}}
             </ul>

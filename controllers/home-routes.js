@@ -111,6 +111,12 @@ router.get('/blogpost/:id', async (req, res) => {
         });
 
         const blog_posts = blogPostData.get({ plain: true });
+
+        // Reformat dates
+        blog_posts.date_created = blog_posts.date_created.toLocaleString();
+        blog_posts.comments.forEach(comment => {
+            comment.date_created = comment.date_created.toLocaleString();
+        });
         console.trace(blog_posts)
 
         res.render('singlepost', {

@@ -120,3 +120,7 @@ main {
 .card-bp:hover {
     background-color: #ce8033;
 }
+
+.card ul {
+    list-style-type: none;
+}
