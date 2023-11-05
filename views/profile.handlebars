@@ -1,15 +1,29 @@
-
-    <link rel="stylesheet" type="text/css" href="/css/jass.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <title>The Tech Blog</title>
+<link rel="stylesheet" type="text/css" href="/css/jass.css">
+<link rel="stylesheet" href="/css/style.css">
+<title>The Tech Blog</title>
+<style>
+    .delete-button {
+        background-color: red;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        font-size: 18px;
+        line-height: 30px;
+        text-align: center;
+        cursor: pointer;
+    }
+</style>
 </head>
+
 <body>
     <header>
         <nav>
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/profile">Profile</a></li>
-                <li><a id="logout">Logout</a></li>
+                <li><a style="cursor: pointer;" id="logout">Logout</a></li>
             </ul>
         </nav>
     </header>
@@ -18,19 +32,28 @@
     </div>
     <main>
         <h1>Your posts:</h1>
-        {{#each blog_posts as |blog_post| }}
-        <div class="card card-bp">
-            <a href="/blogpost/{{blog_post.id}}"></a>
-            <div class="title"><h2>{{blog_post.title}}</h2></div>
-            <div class="content">
-                <p>{{blog_post.content}}</p>
+        <div id="profile-post-list">
+            {{#each blog_posts as |blog_post| }}
+            <div>
+                <div class="card card-bp">
+                    <a href="/blogpost/{{blog_post.id}}"></a>
+                    <div class="title">
+                        <h2>{{blog_post.title}}</h2>
+                    </div>
+                    <div class="content">
+                        <p>{{blog_post.content}}</p>
+                    </div>
+                    <div class="username">{{username}}</div>
+                    <button class="delete-button" data-id="{{blog_post.id}}">&#128465;</button>
+                </div>
             </div>
-            <div class="username">{{username}}</div>
+            {{/each}}
         </div>
-        {{/each}}
-        <button id="new-post-btn">Create a new post!</button>
+        <br><button id="new-post-btn">Create a new post!</button>
     </main>
-    {{!-- <script src="./js/login.js"></script> --}}
+    {{!--
+    <script src="./js/login.js"></script> --}}
     <script src="/js/logout.js"></script>
     <script src="/js/navnewpost.js"></script>
+    <script src="/js/deletepost.js"></script>
 </body>
