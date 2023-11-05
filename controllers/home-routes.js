@@ -105,10 +105,12 @@ router.get('/blogpost/:id', async (req, res) => {
             ],
         });
 
-        const blog_post = blogPostData.get({ plain: true });
+        const blog_posts = blogPostData.get({ plain: true });
+        console.trace(blog_posts)
 
-        res.render('homepage', {
-            ...blog_post,
+        res.render('singlepost', {
+            ...blog_posts,
+            logged_in: req.session.logged_in
         });
     } catch (err) {
         res.status(500).json(err);
