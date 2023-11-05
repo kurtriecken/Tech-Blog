@@ -1,5 +1,5 @@
 const withAuth = require('../utils/auth');
-const { User, BlogPost } = require('../models');
+const { User, BlogPost, Comment } = require('../models');
 const router = require('express').Router();
 
 // ROUTE: /
@@ -102,11 +102,16 @@ router.get('/blogpost/:id', async (req, res) => {
                         exclude: ['password'],
                     },
                 },
+                {
+                    model: Comment,
+                    include: [{ model: User }],
+                },
+
             ],
         });
 
         const blog_posts = blogPostData.get({ plain: true });
-        console.trace(blog_posts)
+        console.trace(blog_posts.comments[0].user)
 
         res.render('singlepost', {
             ...blog_posts,

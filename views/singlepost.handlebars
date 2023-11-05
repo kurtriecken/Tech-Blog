@@ -1,8 +1,8 @@
-
-    <link rel="stylesheet" type="text/css" href="/css/jass.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <title>The Tech Blog</title>
+<link rel="stylesheet" type="text/css" href="/css/jass.css">
+<link rel="stylesheet" href="/css/style.css">
+<title>The Tech Blog</title>
 </head>
+
 <body>
     <header>
         <nav>
@@ -21,14 +21,22 @@
         <h1>The Tech Blog</h1>
     </div>
     <main>
-        <div class="card card-bp">
-            <a href="/blogpost/{{id}}"></a>
-            <div class="title"><h2>{{title}}</h2></div>
+        <div class="card">
+            <div class="title">
+                <h2>{{title}}</h2>
+            </div>
             <div class="content">
                 <p>{{content}}</p>
             </div>
+            <ul>
+                {{#each comments as |comment| }}
+                <li>
+                    <p>{{comment.content}} -{{comment.user.username}}</p>
+                </li>
+                {{/each}}
+            </ul>
+
             <div class="username">{{user.username}}</div>
-            {{!-- <div>{{user.email}}</div> --}}
         </div>
     </main>
 </body>
