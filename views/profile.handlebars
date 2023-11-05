@@ -18,8 +18,16 @@
     </div>
     <main>
         <h1>YOUR PROFILE IS HERE</h1>
-        {{!-- <button id="logout">Log out here</button> --}}
-        <button href="/">Create a new post!</button>
+        {{#each blogposts as |blogpost| }}
+        <div class="card">
+            <div class="title"><h2>{{blogpost.title}}</h2></div>
+            <div class="content">
+                <p>{{blogpost.content}}</p>
+            </div>
+            <div class="username">{{user.username}}</div>
+        </div>
+        {{/each}}
+        <button id="new-post-btn">Create a new post!</button>
     </main>
     <script src="./js/login.js"></script>
     <script src="./js/logout.js"></script>
