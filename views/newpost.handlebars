@@ -9,7 +9,7 @@
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/profile">Profile</a></li>
-                <li><a id="logout">Logout</a></li>
+                <li><a style="cursor: pointer;" id="logout">Logout</a></li>
             </ul>
         </nav>
     </header>
@@ -18,9 +18,11 @@
     </div>
     <main>
         <form class="new-post-form" action="#" method="post">
-            <input type="title" placeholder="Title" id="title-post" required>
-            <input type="content" placeholder="Content" id="content-post" required>
-            <button type="submit">Upload Post</button>
+            <input type="title" placeholder="Your title..." id="title-post" required><br>
+            {{!-- <input type="content" placeholder="Content" id="content-post" required> --}}
+            <textarea id="content-post" name="comment-text" rows="5" cols="90" 
+            placeholder="What would you like to say?" required></textarea><br>
+            <button id="upload-button" type="submit">Upload Post</button>
         </form>
     </main>
     <script src="/js/login.js"></script>

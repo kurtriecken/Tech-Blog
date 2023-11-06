@@ -16,7 +16,9 @@ router.get('/', async (req, res) => {
         });
 
         // Serialize the data so the template can read it
-        const blog_posts = blogpostData.map((bp) => bp.get({ plain: true }));
+        // Reverse so the most recent posts appear at the top
+        const blog_posts = blogpostData.map(bp => bp.get({ plain: true })).reverse();
+        blog_posts.forEach(bp => bp.date_created = bp.date_created.toLocaleString());
 
         res.render('homepage', {
             blog_posts,

@@ -37,9 +37,12 @@
                 {{/unless}}
                 {{#each comments as |comment| }}
                 <li>
-                    <p>{{comment.content}} -{{comment.user.username}} @ {{comment.date_created}}</p>
+                    <p>"{{comment.content}}" {{comment.user.username}} -- {{comment.date_created}}</p>
                 </li>
                 {{/each}}
+                {{#unless logged_in}}
+                <a href="/login">Login to comment!</a>
+                {{/unless}}
             </ul>
             {{#if logged_in}}
             <form id="bp-comment-card" class="comment-form" action="#" method="post">

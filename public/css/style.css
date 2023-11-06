@@ -7,7 +7,7 @@ root:: {
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
 }
 
 body {
@@ -55,7 +55,7 @@ nav a {
 
 .logo {
     text-align: center;
-    padding: 20px;
+    /* padding: 20px; */
 }
 
 .logo h1 {
@@ -122,13 +122,14 @@ main {
     top: 0;
     left: 0;
     width: 100%;
-    height: 65%;
+    height: 100%;
 }
 
 .card-bp:hover,
 #new-post-btn:hover,
 #new-comment-btn:hover,
-#new-post-btn:hover {
+#new-post-btn:hover,
+#upload-button:hover {
     background: black;
     color: #FFC904;
 }
@@ -137,9 +138,17 @@ main {
     list-style-type: none;
 }
 
+.card ul li {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 2% 0;
+    padding: 1%;
+}
+
 #new-post-bt,
 #new-comment-btn,
-#new-post-btn {
+#new-post-btn,
+#upload-button {
     width: 100%;
     padding: 10px;
     background-color: #FFC904;
@@ -148,4 +157,13 @@ main {
     border-radius: 4px;
     font-size: 18px;
     cursor: pointer;
+}
+
+#new-post-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#new-post-form input {
+    display: flex;
 }
