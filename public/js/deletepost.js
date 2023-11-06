@@ -32,15 +32,17 @@ const deleteOrUpdateBlogPost = async (event) => {
         let h1 = document.getElementById(`title-${id}`);
         let inputEle = document.createElement('input');
         inputEle.value = h1.textContent;
-        inputEle.setAttribute('id', 'new-title');
+        inputEle.setAttribute('id', `new-title-${id}`);
         inputEle.setAttribute('class', 'custom-input');
+        inputEle.setAttribute('style', 'margin: 0 0 1% 0');
         h1.parentNode.replaceChild(inputEle, h1);
 
         let pTag = document.getElementById(`content-${id}`);
         let newInputEle = document.createElement('input');
         newInputEle.value = pTag.textContent;
-        newInputEle.setAttribute('id', 'new-content');
+        newInputEle.setAttribute('id', `new-content-${id}`);
         newInputEle.setAttribute('class', 'custom-input');
+        newInputEle.setAttribute('style', 'margin: 0 0 1% 0');
         pTag.parentNode.replaceChild(newInputEle, pTag);
 
         let newButton = document.createElement('button');
@@ -59,9 +61,9 @@ const updatePostContent = async (event) => {
     console.log('clikc lick');
 
     // get info off the elements
-    let title = document.getElementById('new-title').value.trim();
-    let content = document.getElementById('new-content').value.trim();
     let id = event.target.getAttribute('data-id');
+    let title = document.getElementById(`new-title-${id}`).value.trim();
+    let content = document.getElementById(`new-content-${id}`).value.trim();
     let date_created = new Date();
     console.trace(`${title} ${content} ${id} ${date_created}`);
 
