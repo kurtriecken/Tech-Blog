@@ -7,7 +7,7 @@
 * {
     margin: 0;
     padding: 0;
-    /* box-sizing: border-box; */
+    box-sizing: border-box;
 }
 
 body {
@@ -88,7 +88,11 @@ nav a:hover {
 
 main {
     width: auto;
-    padding: 20px;
+    padding: 20px 0;
+}
+
+main div {
+    margin: auto;
 }
 
 .card {
@@ -96,7 +100,8 @@ main {
     border-radius: 8px;
     padding: 20px;
     margin: 10px;
-    max-width: 800px;
+    /* max-width: 800px; */
+    width: 95%;
     background: black;
 }
 
@@ -141,7 +146,7 @@ main {
 }
 
 .card ul li {
-    border: 1px solid #ccc;
+    border: 1px solid var(--ucfDgold);
     border-radius: 8px;
     margin: 2% 0;
     padding: 1%;
@@ -186,8 +191,8 @@ main {
 }
 
 @media screen and (max-width: 780px) {
-    /* main {
-        width: auto;
+    /* card {
+        width: 80%;
     } */
 }
 

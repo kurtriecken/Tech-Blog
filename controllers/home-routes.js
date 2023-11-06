@@ -63,7 +63,8 @@ router.get('/profile', withAuth, async (req, res) => {
         });
 
         const user = userData.get({ plain: true });
-        console.trace(user);
+        user.blog_posts.reverse();
+        // console.trace(user);
         res.render('profile', {
             ...user,
             logged_in: true
