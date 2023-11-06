@@ -87,6 +87,7 @@ nav a:hover {
 }
 
 main {
+    width: 60%;
     padding: 20px;
 }
 
@@ -166,4 +167,18 @@ main {
 
 #new-post-form input {
     display: flex;
+}
+
+.delete-button,
+.edit-button {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
 }

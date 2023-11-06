@@ -1,9 +1,9 @@
-const deleteBlogPost = async (event) => {
+const deleteOrUpdateBlogPost = async (event) => {
     event.preventDefault();
     // event.stopPropogation();
 
     // Ensures what was clicked was a delete button
-    if (event.target.nodeName == 'BUTTON') {
+    if (event.target.nodeName == 'BUTTON' && event.target.className == 'delete-button') {
         // console.log(event.target.getAttribute('data-id'));
         let id = event.target.getAttribute('data-id');
 
@@ -13,6 +13,8 @@ const deleteBlogPost = async (event) => {
             headers: { 'Content-Type': 'application/json' },
         });
 
+        // After a successful deletion, reload the page
+        // Page should reload without the deleted blog post
         if (response.ok) {
             document.location.reload();
         }
@@ -20,9 +22,14 @@ const deleteBlogPost = async (event) => {
             alert(response.statusText);
         }
 
-        // After a successful deletion, reload the page
-        // Page should reload without the deleted blog post
-    };
+
+    } 
+    else if (event.target.nodeName == 'BUTTON' && event.target.className == 'edit-button fa') {
+        console.log('clickclickcklckliclik');
+
+        // Render a new page to edit the blog post
+    }
 };
 
-document.querySelector('#profile-post-list').addEventListener('click', deleteBlogPost);
+document.querySelector('#profile-post-list').addEventListener('click', deleteOrUpdateBlogPost);
+// document.querySelector('.card-bp').addEventListener('click', renderButtons);
