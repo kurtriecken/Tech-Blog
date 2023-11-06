@@ -1,3 +1,8 @@
+root:: {
+    --ucfLgold: #FFC904;
+    --ucfDgold: #BA9B37;
+}
+
 /* Reset some default styles */
 * {
     margin: 0;
@@ -19,6 +24,8 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+
+
 }
 
 header {
@@ -40,7 +47,7 @@ nav li {
 
 nav a {
     text-decoration: none;
-    color: #ff7f00;
+    color: #FFC904;
     /* Fun, orange link color */
     font-family: 'Baloo Bhai 2', cursive;
     font-weight: bold;
@@ -57,10 +64,11 @@ nav a {
     font-family: 'Righteous', cursive;
     background: linear-gradient(90deg, #f06, #6f0, #06f, #f06);
     background-clip: text;
-    /* color: transparent; */
+    color: whitesmoke;
     background-size: 400%;
     animation: neonRainbow 10s linear infinite;
     width: 100vw;
+    /* color: #BA9B37; */
 }
 
 @keyframes neonRainbow {
@@ -117,10 +125,27 @@ main {
     height: 65%;
 }
 
-.card-bp:hover {
-    background-color: #ce8033;
+.card-bp:hover,
+#new-post-btn:hover,
+#new-comment-btn:hover,
+#new-post-btn:hover {
+    background: black;
+    color: #FFC904;
 }
 
 .card ul {
     list-style-type: none;
+}
+
+#new-post-bt,
+#new-comment-btn,
+#new-post-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #FFC904;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    cursor: pointer;
 }

@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="/css/jass.css">
 <link rel="stylesheet" href="/css/style.css">
-<title>The Tech Blog</title>
+<title>Tech Blog</title>
 </head>
 
 <body>
@@ -10,7 +10,7 @@
                 <li><a href="/">Home</a></li>
                 {{#if logged_in}}
                 <li><a href="/profile">Profile</a></li>
-                <li><a id="logout">Logout</a></li>
+                <li><a style="cursor: pointer;" id="logout">Logout</a></li>
                 {{!-- <li><button id="logout">Logout</button></li> --}}
                 {{else}}
                 <li><a href="/login">Login</a></li>
@@ -44,9 +44,9 @@
             {{#if logged_in}}
             <form id="bp-comment-card" class="comment-form" action="#" method="post">
                 <label for="name">Add a comment below!</label><br><br>
-                <textarea id="comment-content" name="comment-text" rows="5" cols="40" required></textarea>
+                <textarea id="comment-content" name="comment-text" rows="5" cols="90" required></textarea>
                 <br>
-                <button type="submit">Submit</button>
+                <button id="new-comment-btn" type="submit">Submit</button>
             </form>
             {{/if}}
         </div>
