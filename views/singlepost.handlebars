@@ -1,6 +1,4 @@
-<link rel="stylesheet" type="text/css" href="/css/jass.css">
-<link rel="stylesheet" href="/css/style.css">
-<title>Tech Blog</title>
+
 </head>
 
 <body>
@@ -45,10 +43,10 @@
                 {{/unless}}
             </ul>
             {{#if logged_in}}
-            <form id="bp-comment-card" class="comment-form" action="#" method="post">
-                <label for="name">Add a comment below!</label><br><br>
-                <textarea id="comment-content" name="comment-text" rows="5" cols="90" required></textarea>
-                <br>
+            <form style="margin: auto;" id="bp-comment-card" class="comment-form" action="#" method="post">
+                <label for="name">Add a comment below!</label><br>
+                <input class="custom-input" id="comment-content" name="comment-text" required>
+                <br><br>
                 <button id="new-comment-btn" type="submit">Submit</button>
             </form>
             {{/if}}
