@@ -1,4 +1,4 @@
-root:: {
+:root {
     --ucfLgold: #FFC904;
     --ucfDgold: #BA9B37;
 }
@@ -87,12 +87,12 @@ nav a:hover {
 }
 
 main {
-    width: 60%;
+    width: auto;
     padding: 20px;
 }
 
 .card {
-    border: 1px solid #ccc;
+    border: 1px solid #BA9B37;
     border-radius: 8px;
     padding: 20px;
     margin: 10px;
@@ -130,7 +130,8 @@ main {
 #new-post-btn:hover,
 #new-comment-btn:hover,
 #new-post-btn:hover,
-#upload-button:hover {
+#upload-button:hover,
+.all-buttons:hover {
     background: black;
     color: #FFC904;
 }
@@ -149,7 +150,8 @@ main {
 #new-post-bt,
 #new-comment-btn,
 #new-post-btn,
-#upload-button {
+#upload-button,
+.all-buttons {
     width: 100%;
     padding: 10px;
     background-color: #FFC904;
@@ -181,4 +183,32 @@ main {
     line-height: 30px;
     text-align: center;
     cursor: pointer;
+}
+
+@media screen and (max-width: 780px) {
+    /* main {
+        width: auto;
+    } */
+}
+
+.custom-input {
+    background-color: #f7f7f7;
+    border: 2px solid #BA9B37;
+    border-radius: 5px;
+    color: #333;
+    font-size: 16px;
+    padding: 10px;
+    width: 300px;
+    outline: none;
+}
+
+/* Hover effect */
+.custom-input:hover {
+    border-color: #1e72e5;
+}
+
+/* Focus effect */
+.custom-input:focus {
+    border-color: #1e72e5;
+    box-shadow: 0 0 5px rgba(30, 114, 229, 0.7);
 }

@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const withAuth = require('../../utils/auth');
 const { BlogPost } = require('../../models');
 
 // ROUTE: /api/blogposts
@@ -26,7 +27,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // CREATE new BlogPost
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
     try {
         const blogPostData = await BlogPost.create({
             title: req.body.title,
@@ -42,14 +43,15 @@ router.post('/', async (req, res) => {
 });
 
 // UPDATE BlogPost by ID
-router.put('/:id', async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
     try {
+        console.trace(`${req.body.title} ${req.body.content} ${req.body.date_created} ${req.session.user_id}`);
         const blogPostData = await BlogPost.update(
             {
                 title: req.body.title,
                 content: req.body.content,
                 date_created: req.body.date_created,
-                user_id: req.body.user_id
+                user_id: req.session.user_id
             },
             {
                 where: {

@@ -91,6 +91,23 @@ router.get('/newpost', withAuth, async (req, res) => {
     }
 })
 
+// router.get('/update', withAuth, async (req, res) => {
+//     try {
+//         const userData = await BlogPost.findByPk(req.session.user_id, {
+//             attributes: { exclude: ['password'] }
+//         });
+
+//         const user = userData.get({ plain: true });
+//         // console.trace('Im in here now Peepes');
+//         res.render('updatepost', {
+//             ...user,
+//             logged_in: true
+//         });
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// })
+
 // CREATE A ROUTE to send to a page with just 1 blogpost
 // Here, users can add a comment to the blog post
 // It should style the same as the home page

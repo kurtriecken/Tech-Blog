@@ -23,13 +23,68 @@ const deleteOrUpdateBlogPost = async (event) => {
         }
 
 
-    } 
+    }
     else if (event.target.nodeName == 'BUTTON' && event.target.className == 'edit-button fa') {
         console.log('clickclickcklckliclik');
+        let id = event.target.getAttribute('data-id');
 
-        // Render a new page to edit the blog post
-    }
+        // Replace each text element
+        let h1 = document.getElementById(`title-${id}`);
+        let inputEle = document.createElement('input');
+        inputEle.value = h1.textContent;
+        inputEle.setAttribute('id', 'new-title');
+        inputEle.setAttribute('class', 'custom-input');
+        h1.parentNode.replaceChild(inputEle, h1);
+
+        let pTag = document.getElementById(`content-${id}`);
+        let newInputEle = document.createElement('input');
+        newInputEle.value = pTag.textContent;
+        newInputEle.setAttribute('id', 'new-content');
+        newInputEle.setAttribute('class', 'custom-input');
+        pTag.parentNode.replaceChild(newInputEle, pTag);
+
+        let newButton = document.createElement('button');
+        newButton.textContent = 'Save changes';
+        newButton.setAttribute('data-id', `${id}`);
+        newButton.setAttribute('class', 'all-buttons');
+        newInputEle.parentNode.appendChild(newButton);
+
+        newButton.addEventListener('click', updatePostContent);
+
+    };
 };
 
+const updatePostContent = async (event) => {
+    event.preventDefault();
+    console.log('clikc lick');
+
+    // get info off the elements
+    let title = document.getElementById('new-title').value.trim();
+    let content = document.getElementById('new-content').value.trim();
+    let id = event.target.getAttribute('data-id');
+    let date_created = new Date();
+    console.trace(`${title} ${content} ${id} ${date_created}`);
+
+    if (title && content && date_created) {
+        const response = await fetch(`/api/blogposts/${id}`, {
+            method: 'PUT',
+            body: JSON.stringify({ title, content, date_created }),
+            headers: { 'Content-Type': 'application/json' },
+        });
+
+        if (response.ok) {
+            // alert(response.statusText)
+            document.location.reload();
+        }
+        else {
+            alert(response.statusText);
+        }
+    }
+
+
+    // make a post request to /api/blogposts/:id
+
+    // refresh the page
+}
+
 document.querySelector('#profile-post-list').addEventListener('click', deleteOrUpdateBlogPost);
-// document.querySelector('.card-bp').addEventListener('click', renderButtons);
