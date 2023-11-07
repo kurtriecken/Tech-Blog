@@ -50,6 +50,7 @@ nav a {
     color: #FFC904;
     /* Fun, orange link color */
     font-family: 'Baloo Bhai 2', cursive;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: bold;
 }
 
@@ -62,6 +63,7 @@ nav a {
     font-size: 48px;
     text-transform: uppercase;
     font-family: 'Righteous', cursive;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background: linear-gradient(90deg, #f06, #6f0, #06f, #f06);
     background-clip: text;
     color: whitesmoke;
